@@ -1,0 +1,30 @@
+<div class="large-12 cell">
+    <h3>Удалить заявки</h3>
+  </div>
+
+<% if @error && !@error.empty? %>
+<div class="large-12 cell callout">
+  <p>При заполнении формы возникла ошибка:</p>
+  <p><%= @error %></p>
+</div>
+<% end %>
+
+<div class="large-12 cell">
+  <form method="post">
+    <div class="grid-container grid-x grid-padding-x">      
+      <div class="large-6 cell">
+        <label>Пункт отправления
+          <input type="text" placeholder="Москва" name="depart_name" value="<%= @params && @params[:depart_name] %>">
+        </label>
+      </div>
+      <div class="large-6 cell">
+        <label>Пункт назначения
+          <input type="text" placeholder="Лондон" name="dest_name" value="<%= @params && @params[:dest_name] %>">
+        </label>
+      </div>
+      <div class="large-12 cell">
+        <input type="submit" value="Удалить" class="button">
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,66 @@
+<div class="large-12 cell">
+    <h3>Удалить рейс</h3>
+    <p>Достаточно заполнить только те поля, которые необходимы для точной идентификации нужного элемента.</p>
+  </div>
+
+<% if @error && !@error.empty? %>
+<div class="large-12 cell callout">
+  <p>При заполнении формы возникла ошибка:</p>
+  <p><%= @error %></p>
+</div>
+<% end %>
+
+<div class="large-12 cell">
+  <form method="post">
+    <div class="grid-container grid-x grid-padding-x">
+      <div class="large-4 cell">
+        <label>Номер рейса
+          <input type="text" placeholder="SU 1702" name="num" value="<%= @params && @params[:num] %>">
+        </label>
+      </div>
+      <div class="large-4 cell">
+        <label>Пункт отправления
+          <input type="text" placeholder="Екатеринбург" name="depart_name" value="<%= @params && @params[:depart_name] %>">
+        </label>
+      </div>
+      <div class="large-4 cell">
+        <label>Дата вылета
+          <input type="text" placeholder="2021-05-04" name="depart_date" value="<%= @params && @params[:depart_date] %>">
+        </label>
+      </div>
+      <div class="large-4 cell">
+        <label>Время вылета
+          <input type="text" placeholder="00:50" name="depart_time" value="<%= @params && @params[:depart_time] %>">
+        </label>
+      </div>
+      <div class="large-4 cell">
+        <label>Пункт назначения
+          <input type="text" placeholder="Владивосток" name="dest_name" value="<%= @params && @params[:dest_name] %>">
+        </label>
+      </div>
+      <div class="large-4 cell">
+        <label>Дата прибытия
+          <input type="text" placeholder="2021-05-05" name="dest_date" value="<%= @params && @params[:dest_date] %>">
+        </label>
+      </div>
+      <div class="large-4 cell">
+        <label>Время прибытия
+          <input type="text" placeholder="16:14" name="dest_time" value="<%= @params && @params[:dest_time] %>">
+        </label>
+      </div>
+      <div class="large-4 cell">
+        <label>Тип самолета
+          <input type="text" placeholder="Airbus A319" name="plane" value="<%= @params && @params[:plane] %>">      
+        </label>
+      </div>
+      <div class="large-4 cell">
+        <label>Стоимость, руб.
+          <input type="text" placeholder="13504" name="price" value="<%= @params && @params[:price] %>">
+        </label>
+      </div>
+      <div class="large-12 cell">
+        <input type="submit" value="Удалить" class="button">
+      </div>
+    </div>
+  </form>
+</div>

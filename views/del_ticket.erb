@@ -1,0 +1,56 @@
+<div class="large-12 cell">
+    <h3>Удалить заявку</h3>
+    <p>Достаточно заполнить только те поля, которые необходимы для точной идентификации нужного элемента.</p>
+  </div>
+
+<% if @error && !@error.empty? %>
+<div class="large-12 cell callout">
+  <p>При заполнении формы возникла ошибка:</p>
+  <p><%= @error %></p>
+</div>
+<% end %>
+
+<div class="large-12 cell">
+  <form method="post">
+    <div class="grid-container grid-x grid-padding-x">      
+    <div class="large-4 cell">
+        <label>Идентификатор
+          <input type="text" placeholder="1" name="id" value="<%= @params && @params[:id] %>">
+        </label>
+      </div>
+      <div class="large-4 cell">
+        <label>Пункт отправления
+          <input type="text" placeholder="Москва" name="depart_name" value="<%= @params && @params[:depart_name] %>">
+        </label>
+      </div>
+      <div class="large-4 cell">
+        <label>Дата вылета
+          <input type="text" placeholder="2021-05-04" name="depart_date" value="<%= @params && @params[:depart_date] %>">
+        </label>
+      </div>
+      <div class="large-4 cell">
+        <label>Время вылета
+          <input type="text" placeholder="18:00" name="depart_time" value="<%= @params && @params[:depart_time] %>">
+        </label>
+      </div>
+      <div class="large-4 cell">
+        <label>Пункт назначения
+          <input type="text" placeholder="Лондон" name="dest_name" value="<%= @params && @params[:dest_name] %>">
+        </label>
+      </div>
+      <div class="large-4 cell">
+        <label>Фамилия пассажира
+          <input type="text" placeholder="Петров" name="surname" value="<%= @params && @params[:surname] %>">
+        </label>
+      </div>
+      <div class="large-4 cell">
+        <label>Имя пассажира
+          <input type="text" placeholder="Иван" name="name" value="<%= @params && @params[:name] %>">
+        </label>
+      </div>      
+      <div class="large-12 cell">
+        <input type="submit" value="Удалить" class="button">
+      </div>
+    </div>
+  </form>
+</div>

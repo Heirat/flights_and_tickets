@@ -1,0 +1,85 @@
+<div class="large-12 cell">
+    <h3>Рейсы</h3>
+</div>
+
+<% if @params && !@params[:errors].empty? %>
+<div class="large-12 cell callout">
+  <p>При заполнении формы возникли ошибки:</p>
+  <ul>
+    <% @params[:errors].each do |error| %>
+    <li>
+      <%= error %>
+    </li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<div class="large-12 cell">
+  <form method="post">
+    <div class="grid-container grid-x grid-padding-x">
+      
+      <div class="large-4 cell">
+        <label>Пункт отправления
+          <input type="text" placeholder="Москва" name="depart_name" value="<%= @params && @params[:depart_name] %>">
+        </label>
+      </div>
+      
+      <div class="large-4 cell">
+        <label>Пункт назначения
+          <input type="text" placeholder="Лондон" name="dest_name" value="<%= @params && @params[:dest_name] %>">
+        </label>
+      </div>
+
+      <div class="large-4 cell">
+        <label>Дата вылета
+          <input type="text" placeholder="2021-05-04" name="depart_date" value="<%= @params && @params[:depart_date] %>">
+        </label>
+      </div>
+      
+      <div class="large-12 cell">
+        <input type="submit" value="Фильтровать" class="button">
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="large-12">
+  <% if @filtered_flights.nil? || @filtered_flights.empty? %>
+  <p>Рейсов не найдено.</p>
+  <% else %>
+    <h4>Всего рейсов:
+    <%= @filtered_flights.count %>
+    </h4>
+    <table>
+      <thead>
+          <tr>
+            <th>Номер рейса</th>
+            <th>Пункт отправления</th>
+            <th>Дата вылета</th>
+            <th>Время вылета</th>
+            <th>Пункт назначения</th>
+            <th>Дата прибытия</th>
+            <th>Время прибытия</th>
+            <th>Тип самолета</th>
+            <th>Стоимость, руб.</th>
+          </tr>
+      </thead>
+      <tbody>
+        <% @filtered_flights.each do |flight| %>
+          <tr>
+            <th><%= flight.num %></th>
+            <th><%= flight.depart_name %></th>
+            <th><%= flight.depart_date %></th>
+            <th><%= flight.depart_time %></th>
+            <th><%= flight.dest_name %></th>
+            <th><%= flight.dest_date %></th>
+            <th><%= flight.dest_time %></th>
+            <th><%= flight.plane %></th>
+            <th><%= flight.price %></th>
+          </tr>
+        <% end %> 
+      </tbody>
+    </table>
+  <% end %>
+</div>

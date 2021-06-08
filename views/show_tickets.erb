@@ -1,0 +1,76 @@
+<div class="large-12 cell">
+    <h3>Заявки</h3>
+</div>
+
+<% if @params && !@params[:errors].empty? %>
+<div class="large-12 cell callout">
+  <p>При заполнении формы возникли ошибки:</p>
+  <ul>
+    <% @params[:errors].each do |error| %>
+    <li>
+      <%= error %>
+    </li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<div class="large-12 cell">
+  <form method="post">
+    <div class="grid-container grid-x grid-padding-x">
+      
+      <div class="large-4 cell">
+        <label>Дата вылета
+          <input type="text" placeholder="2021-05-04" name="depart_date" value="<%= @params && @params[:depart_date] %>">
+        </label>
+      </div>
+
+      <div class="large-4 cell">
+        <label>Время вылета
+          <input type="text" placeholder="18:00" name="depart_time" value="<%= @params && @params[:depart_time] %>">
+        </label>
+      </div>
+      
+      <div class="large-12 cell">
+        <input type="submit" value="Фильтровать" class="button">
+      </div>
+    </div>
+  </form>
+</div>
+
+
+<div class="large-12">
+  <% if @filtered_tickets.nil? || @filtered_tickets.empty? %>
+  <p>Заявок не найдено.</p>
+  <% else %>
+    <h4>Всего заявок:
+    <%= @filtered_tickets.length %>
+    </h4>
+    <table>
+      <thead>
+          <tr>
+            <th>Идентификатор</th>
+            <th>Пункт отправления</th>
+            <th>Дата вылета</th>
+            <th>Время вылета</th>
+            <th>Пункт назначения</th>
+            <th>Фамилия</th>
+            <th>Имя</th>
+          </tr>
+      </thead>
+      <tbody>
+        <% @filtered_tickets.each do |ticket| %>
+          <tr>
+            <th><%= ticket.id %></th>
+            <th><%= ticket.depart_name %></th>
+            <th><%= ticket.depart_date %></th>
+            <th><%= ticket.depart_time %></th>
+            <th><%= ticket.dest_name %></th>
+            <th><%= ticket.surname %></th>
+            <th><%= ticket.name %></th>
+          </tr>
+        <% end %> 
+      </tbody>
+    </table>
+  <% end %>
+</div>

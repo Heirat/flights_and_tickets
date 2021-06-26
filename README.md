@@ -1,13 +1,13 @@
-# flights_and_tickets
+# Flights and tickets
+It's my lab on Ruby. Web application for data processing.
 
-Это лабораторная работа по Ruby. Веб приложение, моделирующее обработку заявок на авиабилеты.
+## Features
+- Toy data.
+- Adding and deleting data.
+- View and filtering data.
 
-Что было сделано:
-Созданы игрушечные данные
-Добавление\удаление рейсов и заявок
-Вывод и фильтрация рейсов и заявок
-
-Как было сделано:
-Ruby, 
-roda,
-erb + Foundation - верстка
+## Technologies
+- Ruby
+- Roda
+- Erb
+- Foundation
